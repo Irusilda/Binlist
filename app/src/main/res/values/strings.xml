@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">BIN1</string>
+    <string name="binlist_net">BINLIST.NET</string>
+    <string name="hint">Enter the first digits of a card number (BIN/IIN)</string>
+    <string name="scheme_network">SCHEME / NETWORK</string>
+    <string name="brand_title">BRAND</string>
+    <string name="type_title">TYPE</string>
+    <string name="prepaid_title">PREPAID</string>
+    <string name="card_number_title">CARD NUMBER</string>
+    <string name="country_title">COUNTRY</string>
+    <string name="bank_title">BANK</string>
+    <string name="latitude_title">(latitude:</string>
+    <string name="longitude_title">, longitude:</string>
+    <string name="luhn_title">LUHN</string>
+    <string name="lenght_title">LENGHT</string>
+    <string name="lat_end">)</string>
+    <string name="enter">Enter</string>
+    <string name="empty_field">"Поле не может быть пустым"</string>
+    <string name="not_number">"Поле может содержать только цифры"</string>
+    <string name="error_404">"Ошибка 404"</string>
+</resources>
