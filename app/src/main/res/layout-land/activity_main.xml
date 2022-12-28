@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/scheme_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:shadowColor="#F3E9E9"
+        android:text="@string/scheme_network"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hint" />
+
+    <TextView
+        android:id="@+id/prepaid_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/prepaid_title"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/type_text"
+        app:layout_constraintTop_toTopOf="@+id/brand_title" />
+
+    <TextView
+        android:id="@+id/scheme_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/scheme_title"
+        app:layout_constraintTop_toBottomOf="@+id/scheme_title" />
+
+    <TextView
+        android:id="@+id/prepaid_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/prepaid_title"
+        app:layout_constraintTop_toTopOf="@+id/brand_text" />
+
+    <TextView
+        android:id="@+id/type_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:text="@string/type_title"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/scheme_title"
+        app:layout_constraintTop_toTopOf="@+id/scheme_title" />
+
+    <TextView
+        android:id="@+id/type_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/type_title"
+        app:layout_constraintTop_toTopOf="@+id/scheme_text" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="160dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/binlist_net"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img" />
+
+    <TextView
+        android:id="@+id/cardNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/card_number_title"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/brand_text"
+        app:layout_constraintTop_toBottomOf="@+id/brand_text" />
+
+    <TextView
+        android:id="@+id/lenght_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/lenght_title"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/cardNumber"
+        app:layout_constraintTop_toBottomOf="@+id/cardNumber" />
+
+    <TextView
+        android:id="@+id/latitude_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/latitude_title"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/country_text"
+        app:layout_constraintTop_toBottomOf="@+id/country_text" />
+
+    <TextView
+        android:id="@+id/londitude_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/longitude_title"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/latitude_text"
+        app:layout_constraintStart_toEndOf="@+id/latitude_text" />
+
+    <TextView
+        android:id="@+id/longitude_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="@string/lat_end"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/longitude_text"
+        app:layout_constraintStart_toEndOf="@+id/longitude_text" />
+
+    <TextView
+        android:id="@+id/luhn_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/luhn_title"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lenght_title"
+        app:layout_constraintStart_toStartOf="@+id/luhn_text"
+        app:layout_constraintTop_toTopOf="@+id/lenght_title" />
+
+    <TextView
+        android:id="@+id/length_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/lenght_title"
+        app:layout_constraintTop_toBottomOf="@+id/lenght_title" />
+
+    <TextView
+        android:id="@+id/luhn_text"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginStart="50dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toEndOf="@+id/length_text"
+        app:layout_constraintTop_toTopOf="@+id/length_text" />
+
+    <TextView
+        android:id="@+id/brand_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/brand_title"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/scheme_text"
+        app:layout_constraintTop_toBottomOf="@+id/scheme_text" />
+
+    <TextView
+        android:id="@+id/country_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/country_title"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/prepaid_text"
+        app:layout_constraintTop_toTopOf="@+id/cardNumber" />
+
+    <TextView
+        android:id="@+id/bank_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:text="@string/bank_title"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/type_title"
+        app:layout_constraintTop_toTopOf="@+id/type_title" />
+
+    <TextView
+        android:id="@+id/brand_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/brand_title"
+        app:layout_constraintTop_toBottomOf="@+id/brand_title" />
+
+    <TextView
+        android:id="@+id/country_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/country_title"
+        app:layout_constraintTop_toBottomOf="@+id/country_title" />
+
+    <TextView
+        android:id="@+id/bank_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/bank_title"
+        app:layout_constraintTop_toBottomOf="@+id/bank_title" />
+
+    <TextView
+        android:id="@+id/bank_city"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toEndOf="@+id/bank_name"
+        app:layout_constraintTop_toTopOf="@+id/bank_name" />
+
+    <TextView
+        android:id="@+id/bank_url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        android:autoLink="all"
+        app:layout_constraintStart_toStartOf="@+id/bank_name"
+        app:layout_constraintTop_toBottomOf="@+id/bank_city" />
+
+    <TextView
+        android:id="@+id/bank_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        android:autoLink="phone"
+        app:layout_constraintStart_toStartOf="@+id/bank_url"
+        app:layout_constraintTop_toBottomOf="@+id/bank_url" />
+
+    <TextView
+        android:id="@+id/latitude_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/black"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/latitude_title"
+        app:layout_constraintStart_toEndOf="@+id/latitude_title" />
+
+    <TextView
+        android:id="@+id/longitude_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/londitude_title"
+        app:layout_constraintStart_toEndOf="@+id/londitude_title" />
+
+    <TextView
+        android:id="@+id/hint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/hint"
+        app:layout_constraintEnd_toEndOf="@+id/insert"
+        app:layout_constraintStart_toStartOf="@+id/insert"
+        app:layout_constraintTop_toBottomOf="@+id/insert" />
+
+    <EditText
+        android:id="@+id/insert"
+        android:layout_width="378dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="40dp"
+        android:autofillHints=""
+        android:backgroundTint="@color/purple_700"
+        android:drawableEnd="@drawable/ic_baseline_clear_24"
+        android:ems="10"
+        android:gravity="bottom|center"
+        android:hint="@string/enter"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColorHighlight="@color/purple_700"
+        android:textColorLink="@color/purple_700"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+<!--        android:imeOptions="flagNoExtractUi"-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
