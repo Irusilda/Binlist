@@ -1,11 +1,17 @@
 package com.example.bin1
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,18 +22,38 @@ import com.android.volley.toolbox.Volley
 import com.example.bin1.databinding.ActivityMainBinding
 import org.json.JSONObject
 import java.util.*
+import kotlin.collections.HashSet
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
     lateinit var bindingClass: ActivityMainBinding
+    val PREF_NAME = "input_1"
+    private lateinit var prefs: SharedPreferences
+    var set = hashSetOf<String>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindingClass = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
 
-
         bindingClass.apply {
+
+            prefs = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            val forLog = prefs.getStringSet(PREF_NAME, set)
+            val forLogArray = forLog?.toMutableList()
+//          Log.d("MyLog", "$forLogArray")
+            val adapter = ArrayAdapter(
+                this@MainActivity, android.R.layout.simple_spinner_item,
+                forLogArray ?: emptyList()
+            )
+            insert.setAdapter(adapter)
+            insert.threshold = 1
+
+            insert.onItemClickListener = AdapterView.OnItemClickListener { parent, _,
+                                                                           position, id ->
+                parent.getItemAtPosition(position)
+            }
 
             insert.onRightDrawableClicked {
                 it.text.clear()
@@ -44,6 +70,7 @@ class MainActivity : AppCompatActivity() {
                 bankCity.text = ""
                 bankPhone.text = ""
                 bankUrl.text = ""
+
 
             }
             insert.setOnKeyListener { _, keyCode, keyEvent ->
@@ -65,8 +92,16 @@ class MainActivity : AppCompatActivity() {
                     if (!isEmpty() && isDigit()) {
                         val edText = insert.text.toString()
                         getResult(edText.toInt())
-                        // if (edText.length%4 == 0){ insert.append(" ") }
+                        set.add(edText)
+                        savePref()
+                        Log.d("MyLog", set.toString())
+                        adapter.add(edText)
+                        adapter.notifyDataSetChanged()
+
+
                     }
+
+                    insert.clearFocus()
 
                     return@setOnKeyListener true
                 }
@@ -186,4 +221,17 @@ class MainActivity : AppCompatActivity() {
         } else Html.fromHtml(color)
         return version
     }
+    private fun savePref(){
+        prefs = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        val editor = prefs.edit()
+        editor.putStringSet(PREF_NAME, set)
+        editor.apply()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        savePref()
+    }
+
+
 }

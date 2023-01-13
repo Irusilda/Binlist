@@ -10,7 +10,7 @@
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="0dp"
-        android:layout_height="540dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
@@ -42,9 +42,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:ellipsize="end"
                 android:maxLength="13"
                 android:maxLines="1"
-                android:ellipsize="end"
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -272,10 +272,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:autoLink="all"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                android:autoLink="all"
                 app:layout_constraintStart_toStartOf="@+id/bank_name"
                 app:layout_constraintTop_toBottomOf="@+id/bank_name" />
 
@@ -284,12 +284,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:autoLink="phone"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                android:autoLink="phone"
                 app:layout_constraintStart_toStartOf="@+id/bank_url"
                 app:layout_constraintTop_toBottomOf="@+id/bank_url" />
+
+            <TextView
+                android:id="@+id/bank_phone2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                android:autoLink="phone"
+                android:textColor="@color/black"
+                android:textSize="34sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/bank_phone"
+                app:layout_constraintTop_toBottomOf="@+id/bank_phone" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
@@ -316,7 +330,7 @@
         app:layout_constraintStart_toStartOf="@+id/insert"
         app:layout_constraintTop_toBottomOf="@+id/insert" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/insert"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -338,5 +352,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+    <requestFocus />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

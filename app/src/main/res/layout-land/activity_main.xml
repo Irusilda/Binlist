@@ -288,7 +288,7 @@
         app:layout_constraintStart_toStartOf="@+id/insert"
         app:layout_constraintTop_toBottomOf="@+id/insert" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/insert"
         android:layout_width="378dp"
         android:layout_height="64dp"
@@ -300,14 +300,16 @@
         android:ems="10"
         android:gravity="bottom|center"
         android:hint="@string/enter"
+        android:imeOptions="actionDone|flagNoFullscreen"
         android:inputType="text"
         android:padding="10dp"
         android:textColorHighlight="@color/purple_700"
         android:textColorLink="@color/purple_700"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-<!--        android:imeOptions="flagNoExtractUi"-->
+        app:layout_constraintTop_toTopOf="parent" />
+    <requestFocus />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
