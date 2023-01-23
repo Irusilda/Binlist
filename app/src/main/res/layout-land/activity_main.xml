@@ -71,8 +71,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="160dp"
-        android:layout_height="69dp"
+        android:layout_width="152dp"
+        android:layout_height="49dp"
         android:layout_marginStart="16dp"
         android:contentDescription="@string/binlist_net"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,7 @@
         android:id="@+id/cardNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:text="@string/card_number_title"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/brand_text"
@@ -93,7 +93,7 @@
         android:id="@+id/lenght_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="@string/lenght_title"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/cardNumber"
@@ -103,7 +103,7 @@
         android:id="@+id/latitude_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="@string/latitude_title"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/country_text"
@@ -143,7 +143,7 @@
         android:id="@+id/length_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="normal"
@@ -165,7 +165,7 @@
         android:id="@+id/brand_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:text="@string/brand_title"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/scheme_text"
@@ -203,48 +203,43 @@
 
     <TextView
         android:id="@+id/country_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="normal"
+        app:layout_constraintEnd_toStartOf="@+id/bank_url"
         app:layout_constraintStart_toStartOf="@+id/country_title"
         app:layout_constraintTop_toBottomOf="@+id/country_title" />
 
     <TextView
         android:id="@+id/bank_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/bank_title"
         app:layout_constraintTop_toBottomOf="@+id/bank_title" />
 
     <TextView
-        android:id="@+id/bank_city"
-        android:layout_width="0dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="4dp"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/bank_name"
-        app:layout_constraintTop_toTopOf="@+id/bank_name" />
-
-    <TextView
         android:id="@+id/bank_url"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:autoLink="all"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="normal"
-        android:autoLink="all"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/bank_name"
-        app:layout_constraintTop_toBottomOf="@+id/bank_city" />
+        app:layout_constraintTop_toBottomOf="@+id/bank_name" />
 
     <TextView
         android:id="@+id/bank_phone"
@@ -292,8 +287,8 @@
         android:id="@+id/insert"
         android:layout_width="378dp"
         android:layout_height="64dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="25dp"
         android:autofillHints=""
         android:backgroundTint="@color/purple_700"
         android:drawableEnd="@drawable/ic_baseline_clear_24"
@@ -308,8 +303,6 @@
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <requestFocus />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
