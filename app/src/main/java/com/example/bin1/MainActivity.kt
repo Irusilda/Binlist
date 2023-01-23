@@ -16,20 +16,20 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.isDigitsOnly
+import androidx.lifecycle.asLiveData
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.bin1.databinding.ActivityMainBinding
+import com.example.bin1.room.Item
+import com.example.bin1.room.MainDb
 import org.json.JSONObject
 import java.util.*
-import kotlin.collections.HashSet
+import kotlin.collections.ArrayList
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
     lateinit var bindingClass: ActivityMainBinding
-    val PREF_NAME = "input_1"
-    private lateinit var prefs: SharedPreferences
-    var set = hashSetOf<String>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,23 +37,33 @@ class MainActivity : AppCompatActivity() {
         bindingClass = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
 
-        bindingClass.apply {
+//        val decorView: View = window.decorView
+//        decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 
-            prefs = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-            val forLog = prefs.getStringSet(PREF_NAME, set)
-            val forLogArray = forLog?.toMutableList()
-//          Log.d("MyLog", "$forLogArray")
-            val adapter = ArrayAdapter(
-                this@MainActivity, android.R.layout.simple_spinner_item,
-                forLogArray ?: emptyList()
-            )
-            insert.setAdapter(adapter)
-            insert.threshold = 1
+        val db = MainDb.getDb(this)
+        db.getDao().getAllItems().asLiveData().observe(this) { list ->
+            val textArr: MutableList<String> = arrayListOf()
+            list.forEach {
+                val text_item = it.user_number
+                textArr.add(text_item)
+//                Log.d("MyLog", textArr.toString())
 
-            insert.onItemClickListener = AdapterView.OnItemClickListener { parent, _,
-                                                                           position, id ->
-                parent.getItemAtPosition(position)
+                val adapter = ArrayAdapter(
+                    this, android.R.layout.simple_spinner_item,
+                    textArr
+                )
+                bindingClass.insert.setAdapter(adapter)
+                bindingClass.insert.threshold = 1
+
+                bindingClass.insert.onItemClickListener =
+                    AdapterView.OnItemClickListener { parent, _,
+                                                      position, id ->
+                        parent.getItemAtPosition(position)
+                    }
             }
+        }
+
+        bindingClass.apply {
 
             insert.onRightDrawableClicked {
                 it.text.clear()
@@ -67,7 +77,6 @@ class MainActivity : AppCompatActivity() {
                 latitudeText.text = ""
                 longitudeText.text = ""
                 bankName.text = ""
-                bankCity.text = ""
                 bankPhone.text = ""
                 bankUrl.text = ""
 
@@ -92,24 +101,18 @@ class MainActivity : AppCompatActivity() {
                     if (!isEmpty() && isDigit()) {
                         val edText = insert.text.toString()
                         getResult(edText.toInt())
-                        set.add(edText)
-                        savePref()
-                        Log.d("MyLog", set.toString())
-                        adapter.add(edText)
-                        adapter.notifyDataSetChanged()
 
-
+                        val item = Item(null, edText)
+                        Thread{
+                            db.getDao().insertItem(item)
+                        }.start()
                     }
-
                     insert.clearFocus()
-
                     return@setOnKeyListener true
                 }
                 return@setOnKeyListener false
             }
         }
-
-
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -127,7 +130,6 @@ class MainActivity : AppCompatActivity() {
             hasConsumed
         }
     }
-
 
     private fun getResult(binNumber: Int) {
         val url = "https://lookup.binlist.net/$binNumber"
@@ -204,9 +206,8 @@ class MainActivity : AppCompatActivity() {
             latitudeText.text = item.country_latitude.toString()
             longitudeText.text = item.country_longitude.toString()
 
-            bankName.text = item.bank_name + ","
-            bankCity.text = item.bank_city
-            when (bankCity.text) {
+            bankName.text = item.bank_name + ", " + item.bank_city
+            when (item.bank_city) {
                 null -> bankName.text = item.bank_name
                 "" -> bankName.text = item.bank_name
             }
@@ -221,17 +222,4 @@ class MainActivity : AppCompatActivity() {
         } else Html.fromHtml(color)
         return version
     }
-    private fun savePref(){
-        prefs = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-        val editor = prefs.edit()
-        editor.putStringSet(PREF_NAME, set)
-        editor.apply()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        savePref()
-    }
-
-
 }

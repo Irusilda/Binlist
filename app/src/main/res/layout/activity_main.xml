@@ -11,12 +11,12 @@
         android:id="@+id/scroll"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:paddingBottom="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hint">
 
@@ -39,16 +39,14 @@
 
             <TextView
                 android:id="@+id/country_text"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:ellipsize="end"
-                android:maxLength="13"
-                android:maxLines="1"
-                android:singleLine="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/country_title"
                 app:layout_constraintTop_toBottomOf="@+id/country_title" />
 
@@ -247,12 +245,14 @@
 
             <TextView
                 android:id="@+id/bank_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/bank_title"
                 app:layout_constraintTop_toBottomOf="@+id/bank_title" />
 
@@ -292,12 +292,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/bank_url" />
 
             <TextView
-                android:id="@+id/bank_phone2"
+                android:id="@+id/blank"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:layout_marginBottom="16dp"
-                android:autoLink="phone"
+                android:layout_marginBottom="70dp"
                 android:textColor="@color/black"
                 android:textSize="34sp"
                 android:textStyle="normal"
@@ -352,6 +351,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
-    <requestFocus />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
